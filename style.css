@@ -26,24 +26,20 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 20px;
+  padding: 0;
+  /* モバイル対応のため修正 */
 }
 
 /* --- 全体コンテナと画面切替 --- */
 .app-container {
   width: 100%;
   max-width: 450px;
-  height: 80vh;
-  /* 高さを指定 */
-  max-height: 700px;
-  /* 最大高さを指定 */
-  overflow-y: auto;
+  height: 100vh;
+  /* モバイルで全画面になるように */
   background-color: var(--card-background);
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  padding: 40px;
+  padding: 40px 20px;
+  /* 左右の余白を調整 */
   display: flex;
-  /* 中の画面をflexアイテムとして扱う */
 }
 
 .screen {
@@ -51,7 +47,6 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100%;
 }
 
 .screen.active {
@@ -66,7 +61,6 @@ body {
   align-items: center;
   margin-bottom: 30px;
   flex-shrink: 0;
-  /* ヘッダーが縮まないように */
 }
 
 .main-header h2 {
@@ -162,39 +156,34 @@ input[type="number"] {
 
 #setup-form {
   width: 100%;
-　display: flex;
+  display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-.duration-picker {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-}
-
-.duration-item {
+.form-group:last-of-type {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 5px;
 }
 
-.duration-item input {
-  width: 80px;
-  padding: 10px;
-  font-size: 1.5rem;
+#duration-time-input {
+  flex-grow: 1;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 2.5rem;
+  font-weight: 700;
   text-align: center;
-}
-
-.duration-item span {
-  font-size: 0.8rem;
-  color: #777;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
 }
 
 /* --- タイマー画面 --- */
 #timer-screen {
   justify-content: space-between;
+  height: 100%;
 }
 
 .timer-display {
@@ -214,6 +203,18 @@ input[type="number"] {
   font-weight: 700;
   color: var(--text-color);
   letter-spacing: 2px;
+}
+
+/* --- 振り返り画面 --- */
+.review-header {
+  text-align: center;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.review-header p {
+  line-height: 1.6;
+  color: var(--subtext-color);
 }
 
 .review-steps {
@@ -244,89 +245,48 @@ input[type="number"] {
   resize: vertical;
 }
 
+/* --- 履歴画面 --- */
+#history-list {
+  width: 100%;
+  list-style: none;
+  overflow-y: auto;
+}
+
+#history-list li {
+  padding: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+#history-list li:last-child {
+  border-bottom: none;
+}
+
 
 /* =================================================== */
 /* ▼▼▼ モバイル対応（レスポンシブデザイン）▼▼▼ */
 /* =================================================== */
 
-/* --- 画面幅が600px以下の場合に適用されるスタイル --- */
-@media (max-width: 600px) {
-
-  body {
-    /* アプリが画面いっぱいに広がるように、余白を調整 */
-    padding: 0;
-    align-items: flex-start;
-    /* 上寄せにする */
-  }
-
+/* --- 画面幅が600px以上（PCなど）の場合に適用されるスタイル --- */
+@media (min-width: 601px) {
   .app-container {
-    /* スマートフォンでは、カードではなく全画面表示にする */
-    width: 100%;
-    max-width: none;
-    height: 100vh;
-    /* 画面の高さいっぱいにする */
-    max-height: none;
-    border-radius: 0;
-    /* 角丸をなくす */
-    padding: 40px 20px;
-    /* 左右の余白を少し減らす */
-    box-shadow: none;
-    /* 影をなくす */
+    height: 80vh;
+    max-height: 700px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* --- 画面幅が480px以下（小型スマホ）の場合の微調整 --- */
+@media (max-width: 480px) {
+  .app-container {
+    padding: 30px 15px;
   }
 
-  /* --- フォントサイズの調整 --- */
   .app-title {
     font-size: 2rem;
   }
 
   .timer-clock {
     font-size: 2.8rem;
-    /* 少し小さくして画面に収める */
-    letter-spacing: 1px;
-  }
-
-  /* --- 入力欄の調整 --- */
-  .duration-picker {
-    gap: 10px;
-    /* 入力欄の間の余白を少し詰める */
-  }
-
-  .duration-item input {
-    width: 70px;
-    /* 入力欄の幅を少し狭くする */
-    font-size: 1.2rem;
-  }
-
-  /* --- 6ステップフォームの調整 --- */
-  #timer-screen {
-    /* タイマー画面の高さを100%に */
-    height: 100%;
-    justify-content: flex-start;
-    /* 上から順に配置 */
-  }
-
-  .timer-display {
-    margin: 20px 0;
-    /* 上下の余白を調整 */
-  }
-
-  .review-steps {
-    /* フォームが残りの高さいっぱいまで広がるように */
-    flex-grow: 1;
-    overflow-y: auto;
-    /* スクロール可能にする */
-    padding: 0 5px;
-  }
-
-  #duration-time-input {
-    font-family: 'Roboto Mono', monospace;
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-align: center;
-    border: 2px solid var(--border-color);
-    border-radius: 12px;
-    padding: 10px;
-    width: 100%;
-    cursor: pointer;
   }
 }
