@@ -1,0 +1,318 @@
+/* --- 基本設定と変数 --- */
+:root {
+  --primary-color: #6c757d;
+  --primary-color-dark: #5a6268;
+  --danger-color: #dc3545;
+  --background-color: #f8f9fa;
+  --card-background: #ffffff;
+  --text-color: #212529;
+  --subtext-color: #6c757d;
+  --border-color: #dee2e6;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* --- 全体コンテナと画面切替 --- */
+.app-container {
+  width: 100%;
+  max-width: 450px;
+  height: 80vh;
+  /* 高さを指定 */
+  max-height: 700px;
+  /* 最大高さを指定 */
+  overflow-y: auto;
+  background-color: var(--card-background);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  display: flex;
+  /* 中の画面をflexアイテムとして扱う */
+}
+
+.screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* --- ヘッダー --- */
+.main-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-shrink: 0;
+  /* ヘッダーが縮まないように */
+}
+
+.main-header h2 {
+  font-size: 1.5rem;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--subtext-color);
+  transition: color 0.2s;
+}
+
+.icon-btn:hover {
+  color: var(--text-color);
+}
+
+/* --- 共通コンポーネント --- */
+.app-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.subtitle {
+  color: var(--subtext-color);
+  text-align: center;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.btn {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-color-dark);
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.btn-danger:hover {
+  background-color: #f5c6cb;
+  transform: translateY(-2px);
+}
+
+.form-group {
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: left;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+/* --- 初期設定画面 --- */
+#setup-screen {
+  text-align: center;
+}
+
+#setup-form {
+  width: 100%;
+}
+
+.duration-picker {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.duration-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.duration-item input {
+  width: 80px;
+  padding: 10px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.duration-item span {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* --- タイマー画面 --- */
+#timer-screen {
+  justify-content: space-between;
+}
+
+.timer-display {
+  text-align: center;
+  margin: auto 0;
+}
+
+.timer-label {
+  font-size: 1rem;
+  color: var(--subtext-color);
+  margin-bottom: 10px;
+}
+
+.timer-clock {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  letter-spacing: 2px;
+}
+
+.review-steps {
+  width: 100%;
+  overflow-y: auto;
+  padding-right: 10px;
+  flex-grow: 1;
+}
+
+.step {
+  margin-bottom: 20px;
+}
+
+.step label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.step textarea {
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  resize: vertical;
+}
+
+
+/* =================================================== */
+/* ▼▼▼ モバイル対応（レスポンシブデザイン）▼▼▼ */
+/* =================================================== */
+
+/* --- 画面幅が600px以下の場合に適用されるスタイル --- */
+@media (max-width: 600px) {
+
+  body {
+    /* アプリが画面いっぱいに広がるように、余白を調整 */
+    padding: 0;
+    align-items: flex-start;
+    /* 上寄せにする */
+  }
+
+  .app-container {
+    /* スマートフォンでは、カードではなく全画面表示にする */
+    width: 100%;
+    max-width: none;
+    height: 100vh;
+    /* 画面の高さいっぱいにする */
+    max-height: none;
+    border-radius: 0;
+    /* 角丸をなくす */
+    padding: 40px 20px;
+    /* 左右の余白を少し減らす */
+    box-shadow: none;
+    /* 影をなくす */
+  }
+
+  /* --- フォントサイズの調整 --- */
+  .app-title {
+    font-size: 2rem;
+  }
+
+  .timer-clock {
+    font-size: 2.8rem;
+    /* 少し小さくして画面に収める */
+    letter-spacing: 1px;
+  }
+
+  /* --- 入力欄の調整 --- */
+  .duration-picker {
+    gap: 10px;
+    /* 入力欄の間の余白を少し詰める */
+  }
+
+  .duration-item input {
+    width: 70px;
+    /* 入力欄の幅を少し狭くする */
+    font-size: 1.2rem;
+  }
+
+  /* --- 6ステップフォームの調整 --- */
+  #timer-screen {
+    /* タイマー画面の高さを100%に */
+    height: 100%;
+    justify-content: flex-start;
+    /* 上から順に配置 */
+  }
+
+  .timer-display {
+    margin: 20px 0;
+    /* 上下の余白を調整 */
+  }
+
+  .review-steps {
+    /* フォームが残りの高さいっぱいまで広がるように */
+    flex-grow: 1;
+    overflow-y: auto;
+    /* スクロール可能にする */
+    padding: 0 5px;
+  }
+
+}
