@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Temperance</title>
-  <link rel="stylesheet" href="./style.css">
+  <title>Temperance - 欲望コントロール</title>
+  <link rel="stylesheet" href="css/style.css">
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Roboto+Mono:wght@400;700&display=swap"
     rel="stylesheet">
-  <script src="./script.js" defer></script>
+  <script src="js/script.js" defer></script>
 </head>
 
 <body>
@@ -27,7 +27,9 @@
           </div>
           <div class="form-group">
             <label for="duration-time-input">向き合う時間</label>
-            <input type="time" id="duration-time-input" value="00:00" step="1">
+            <div class="time-input-wrapper">
+              <input type="time" id="duration-time-input" value="00:00" step="1">
+            </div>
           </div>
           <button type="submit" class="btn btn-primary">開始</button>
         </form>
