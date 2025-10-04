@@ -10,12 +10,14 @@
   --border-color: #dee2e6;
 }
 
+html {
+  box-sizing: border-box;
+}
+
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  box-sizing: inherit;
 }
 
 body {
@@ -26,27 +28,29 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 0;
-  /* モバイル対応のため修正 */
+  padding: 20px;
+  margin: 0;
 }
 
 /* --- 全体コンテナと画面切替 --- */
 .app-container {
   width: 100%;
   max-width: 450px;
-  height: 100vh;
-  /* モバイルで全画面になるように */
+  height: 90vh;
+  max-height: 750px;
   background-color: var(--card-background);
-  padding: 40px 20px;
-  /* 左右の余白を調整 */
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  padding: 30px;
   display: flex;
+  flex-direction: column;
 }
 
 .screen {
   display: none;
   flex-direction: column;
-  align-items: center;
   width: 100%;
+  height: 100%;
 }
 
 .screen.active {
@@ -56,28 +60,13 @@ body {
 /* --- ヘッダー --- */
 .main-header {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
+  text-align: center;
+  margin-bottom: 15px;
   flex-shrink: 0;
 }
 
 .main-header h2 {
   font-size: 1.5rem;
-}
-
-.icon-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--subtext-color);
-  transition: color 0.2s;
-}
-
-.icon-btn:hover {
-  color: var(--text-color);
 }
 
 /* --- 共通コンポーネント --- */
@@ -100,10 +89,10 @@ body {
   padding: 15px;
   font-size: 1rem;
   font-weight: 700;
-  border: none;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s ease;
+  border: none;
 }
 
 .btn-primary {
@@ -141,34 +130,35 @@ body {
 }
 
 input[type="text"],
-input[type="number"] {
+input[type="time"],
+textarea {
   width: 100%;
   padding: 12px;
   font-size: 1rem;
   border: 1px solid var(--border-color);
   border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* --- 初期設定画面 --- */
 #setup-screen {
+  justify-content: center;
   text-align: center;
+}
+
+.screen-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 #setup-form {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.form-group:last-of-type {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+  margin-top: auto;
 }
 
 #duration-time-input {
-  flex-grow: 1;
   font-family: 'Roboto Mono', monospace;
   font-size: 2.5rem;
   font-weight: 700;
@@ -176,109 +166,115 @@ input[type="number"] {
   border: 2px solid var(--border-color);
   border-radius: 12px;
   padding: 10px;
-  width: 100%;
   cursor: pointer;
 }
 
 /* --- タイマー画面 --- */
 #timer-screen {
   justify-content: space-between;
-  height: 100%;
 }
 
 .timer-display {
   text-align: center;
-  margin: auto 0;
+  flex-shrink: 0;
+  margin-bottom: 15px;
 }
 
 .timer-label {
   font-size: 1rem;
   color: var(--subtext-color);
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .timer-clock {
   font-family: 'Roboto Mono', monospace;
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 700;
   color: var(--text-color);
-  letter-spacing: 2px;
 }
 
-/* --- 振り返り画面 --- */
-.review-header {
-  text-align: center;
+.review-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  width: 100%;
+  padding-right: 10px;
   margin-bottom: 20px;
-  flex-shrink: 0;
 }
 
-.review-header p {
-  line-height: 1.6;
+.review-subtitle,
+.review-prompt {
+  margin-bottom: 15px;
+  text-align: center;
   color: var(--subtext-color);
+  font-size: 0.9rem;
 }
 
 .review-steps {
   width: 100%;
-  overflow-y: auto;
-  padding-right: 10px;
-  flex-grow: 1;
 }
 
 .step {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .step label {
-  display: block;
   font-weight: 700;
   margin-bottom: 8px;
+  font-size: 0.9rem;
 }
 
 .step textarea {
   width: 100%;
-  height: 80px;
+  height: 70px;
   padding: 10px;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  font-family: 'Poppins', sans-serif;
   font-size: 0.9rem;
   resize: vertical;
 }
 
-/* --- 履歴画面 --- */
-#history-list {
+/* --- 結果入力画面 --- */
+#result-screen {
+  justify-content: center;
+  text-align: center;
+}
+
+.result-content h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.result-message {
+  color: var(--subtext-color);
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.result-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
   width: 100%;
-  list-style: none;
-  overflow-y: auto;
 }
 
-#history-list li {
-  padding: 15px;
-  border-bottom: 1px solid var(--border-color);
+.result-buttons .btn {
+  background-color: #e9ecef;
+  color: var(--text-color);
 }
 
-#history-list li:last-child {
-  border-bottom: none;
+.result-buttons .btn:hover {
+  background-color: #dee2e6;
 }
 
-
-/* =================================================== */
-/* ▼▼▼ モバイル対応（レスポンシブデザイン）▼▼▼ */
-/* =================================================== */
-
-/* --- 画面幅が600px以上（PCなど）の場合に適用されるスタイル --- */
-@media (min-width: 601px) {
-  .app-container {
-    height: 80vh;
-    max-height: 700px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  }
-}
-
-/* --- 画面幅が480px以下（小型スマホ）の場合の微調整 --- */
+/* --- モバイル対応 --- */
 @media (max-width: 480px) {
+  body {
+    padding: 0;
+  }
+
   .app-container {
+    height: 100vh;
+    max-height: none;
+    border-radius: 0;
+    box-shadow: none;
     padding: 30px 15px;
   }
 
