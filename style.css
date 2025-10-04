@@ -138,6 +138,7 @@ textarea {
   border: 1px solid var(--border-color);
   border-radius: 8px;
   font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
 }
 
 /* --- 初期設定画面 --- */
