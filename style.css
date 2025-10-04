@@ -142,10 +142,7 @@ textarea {
 
 /* --- 時間入力欄のラッパー（これが鍵！） --- */
 .time-input-wrapper {
-  display: flex;
-  /* 中のinputをFlexアイテムとして扱う */
-  width: 100%;
-  /* このラッパーの幅を100%に固定 */
+  width: 390px;
   border: 2px solid var(--border-color);
   border-radius: 12px;
   padding: 10px;
