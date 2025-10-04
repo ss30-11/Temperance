@@ -43,7 +43,6 @@ body {
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
   padding: 30px;
   display: flex;
-  flex-direction: column;
 }
 
 .screen {
@@ -57,11 +56,13 @@ body {
   display: flex;
 }
 
-/* --- ヘッダー --- */
+/* --- ヘッダー, 共通コンポーネント (変更なし) --- */
 .main-header {
   width: 100%;
-  text-align: center;
-  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
   flex-shrink: 0;
 }
 
@@ -69,7 +70,19 @@ body {
   font-size: 1.5rem;
 }
 
-/* --- 共通コンポーネント --- */
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--subtext-color);
+  transition: color 0.2s;
+}
+
+.icon-btn:hover {
+  color: var(--text-color);
+}
+
 .app-title {
   font-size: 2.5rem;
   font-weight: 700;
@@ -138,35 +151,39 @@ textarea {
   border: 1px solid var(--border-color);
   border-radius: 8px;
   font-family: 'Poppins', sans-serif;
-  box-sizing: border-box;
 }
 
-/* --- 初期設定画面 --- */
+/* =================================================== */
+/* ▼▼▼ 初期設定画面のレイアウト（Gridバージョン）▼▼▼ */
+/* =================================================== */
 #setup-screen {
-  text-align: center;
-  justify-content: space-between;
+  /* 画面全体をGridコンテナにする */
+  display: grid;
+  /* 縦の分割: (ヘッダー部分 自動), (フォーム部分 残り全部), (ボタン部分 自動) */
+  grid-template-rows: auto 1fr auto;
   height: 100%;
+  text-align: center;
 }
 
 #setup-form {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  /* このフォームは高さを成り行きに任せる */
+  /* フォームの中身もGridにする */
+  display: grid;
+  /* 縦の分割: (欲望入力), (時間入力 残り全部) */
+  grid-template-rows: auto 1fr;
+  gap: 25px;
 }
 
-/* ★★★★★ ここからが重要 ★★★★★ */
-
-/* 2番目のフォームグループ（時間設定） */
+/* 時間入力のグループ */
 .form-group:nth-child(2) {
-  margin-bottom: 40px;
-  /* この要素をFlexコンテナにする */
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  /* 縦の分割: (ラベル 自動), (入力欄 残り全部) */
+  grid-template-rows: auto 1fr;
+  gap: 10px;
+  margin-bottom: 0;
 }
 
 #duration-time-input {
-  width: 390px;
   font-family: 'Roboto Mono', monospace;
   font-size: 2.5rem;
   font-weight: 700;
@@ -175,10 +192,12 @@ textarea {
   border-radius: 12px;
   padding: 10px;
   cursor: pointer;
-
-  /* ★★★ 幅の指定を削除し、Flexboxに任せる ★★★ */
-  /* width: 100%; */
+  /* width はGridが自動で計算するので不要 */
 }
+
+/* =================================================== */
+/* ▲▲▲ ▲▲▲ ▲▲▲ */
+/* =================================================== */
 
 /* --- タイマー画面 --- */
 #timer-screen {
@@ -187,23 +206,24 @@ textarea {
 
 .timer-display {
   text-align: center;
-  flex-shrink: 0;
-  margin-bottom: 15px;
+  margin: auto 0;
 }
 
 .timer-label {
   font-size: 1rem;
   color: var(--subtext-color);
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .timer-clock {
   font-family: 'Roboto Mono', monospace;
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 700;
   color: var(--text-color);
+  letter-spacing: 2px;
 }
 
+/* --- 振り返り画面, 履歴画面, モバイル対応 (変更なし) ... */
 .review-content {
   flex-grow: 1;
   overflow-y: auto;
@@ -212,12 +232,14 @@ textarea {
   margin-bottom: 20px;
 }
 
-.review-subtitle,
-.review-prompt {
-  margin-bottom: 15px;
+.review-header {
+  width: 100%;
   text-align: center;
+}
+
+.review-subtitle {
+  margin-bottom: 20px;
   color: var(--subtext-color);
-  font-size: 0.9rem;
 }
 
 .review-steps {
@@ -242,40 +264,21 @@ textarea {
   resize: vertical;
 }
 
-/* --- 結果入力画面 --- */
-#result-screen {
-  justify-content: center;
-  text-align: center;
-}
-
-.result-content h2 {
-  font-size: 2rem;
-  margin-bottom: 15px;
-}
-
-.result-message {
-  color: var(--subtext-color);
-  margin-bottom: 30px;
-  line-height: 1.6;
-}
-
-.result-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+#history-list {
   width: 100%;
+  list-style: none;
+  overflow-y: auto;
 }
 
-.result-buttons .btn {
-  background-color: #e9ecef;
-  color: var(--text-color);
+#history-list li {
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.result-buttons .btn:hover {
-  background-color: #dee2e6;
+#history-list li:last-child {
+  border-bottom: none;
 }
 
-/* --- モバイル対応 --- */
 @media (max-width: 480px) {
   body {
     padding: 0;
