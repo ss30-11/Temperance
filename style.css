@@ -151,9 +151,7 @@ textarea {
 }
 
 #duration-time-input {
-  flex-grow: 1;
-  /* ラッパーの中で可能な限り広がる */
-  width: 100%;
+  width: 390px;
   /* 幅を100%に */
 
   font-family: 'Roboto Mono', monospace;
