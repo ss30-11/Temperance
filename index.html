@@ -5,11 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Temperance - 欲望コントロール</title>
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="css/style.css">
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Roboto+Mono:wght@400;700&display=swap"
     rel="stylesheet">
-  <script src="./script.js" defer></script>
+  <script src="js/script.js" defer></script>
 </head>
 
 <body>
@@ -26,19 +26,21 @@
           <input type="text" id="desire-input" placeholder="例: SNSの衝動見" required>
         </div>
         <div class="form-group">
-          <label>間隔</label>
-          <div class="duration-picker">
-            <div class="duration-item">
-              <input type="number" id="duration-hours" value="0" min="0">
-              <span>時間</span>
+          <label>目標継続時間</label>
+          <div class="native-picker-wrapper">
+            <div class="native-picker-item">
+              <input type="number" id="duration-hours" value="24" min="0" aria-label="時間">
+              <label for="duration-hours">時間</label>
             </div>
-            <div class="duration-item">
-              <input type="number" id="duration-minutes" value="0" min="0" max="59">
-              <span>分</span>
+            <span class="native-picker-separator">:</span>
+            <div class="native-picker-item">
+              <input type="number" id="duration-minutes" value="0" min="0" max="59" aria-label="分">
+              <label for="duration-minutes">分</label>
             </div>
-            <div class="duration-item">
-              <input type="number" id="duration-seconds" value="0" min="0" max="59">
-              <span>秒</span>
+            <span class="native-picker-separator">:</span>
+            <div class="native-picker-item">
+              <input type="number" id="duration-seconds" value="0" min="0" max="59" aria-label="秒">
+              <label for="duration-seconds">秒</label>
             </div>
           </div>
         </div>
