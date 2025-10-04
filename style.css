@@ -103,19 +103,6 @@ input[type="text"], input[type="number"] { width: 100%; padding: 12px; font-size
 .timer-label { font-size: 1rem; color: var(--subtext-color); margin-bottom: 10px; }
 .timer-clock { font-family: 'Roboto Mono', monospace; font-size: 3.5rem; font-weight: 700; color: var(--text-color); letter-spacing: 2px; }
 
-/* --- 振り返り画面 --- */
-.review-header { text-align: center; margin-bottom: 20px; flex-shrink: 0; }
-.review-header p { line-height: 1.6; color: var(--subtext-color); }
-.review-steps { width: 100%; overflow-y: auto; padding-right: 10px; flex-grow: 1; }
-.step { margin-bottom: 20px; }
-.step label { display: block; font-weight: 700; margin-bottom: 8px; }
-.step textarea { width: 100%; height: 80px; padding: 10px; border: 1px solid var(--border-color); border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 0.9rem; resize: vertical; }
-
-/* --- 履歴画面 --- */
-#history-list { width: 100%; list-style: none; overflow-y: auto; }
-#history-list li { padding: 15px; border-bottom: 1px solid var(--border-color); }
-#history-list li:last-child { border-bottom: none; }
-
 
 /* =================================================== */
 /* ▼▼▼ モバイル対応（レスポンシブデザイン）▼▼▼ */
@@ -128,18 +115,11 @@ input[type="text"], input[type="number"] { width: 100%; padding: 12px; font-size
         max-height: 700px;
         border-radius: 20px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
-}
 
-/* --- 画面幅が480px以下（小型スマホ）の場合の微調整 --- */
-@media (max-width: 480px) {
-    .app-container {
-        padding: 30px 15px;
+    .native-time-picker {
+        display: flex;
+        width: 100%;
     }
-    .app-title {
-        font-size: 2rem;
-    }
-    .timer-clock {
-        font-size: 2.8rem;
-    }
+
+    
 }
