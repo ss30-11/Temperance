@@ -166,6 +166,7 @@ textarea {
 }
 
 #duration-time-input {
+  width: 390px;
   font-family: 'Roboto Mono', monospace;
   font-size: 2.5rem;
   font-weight: 700;
