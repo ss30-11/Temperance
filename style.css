@@ -164,7 +164,7 @@ textarea {
   font-weight: 700;
   text-align: center;
   cursor: pointer;
-
+  colo: #000;
   /* ★★★ ブラウザのデフォルトスタイルを強制的に上書き ★★★ */
   border: none;
   background: none;
