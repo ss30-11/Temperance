@@ -27,21 +27,8 @@
         </div>
         <div class="form-group">
           <label>目標継続時間</label>
-          <div class="native-picker-wrapper">
-            <div class="native-picker-item">
-              <input type="number" id="duration-hours" value="24" min="0" aria-label="時間">
-              <label for="duration-hours">時間</label>
-            </div>
-            <span class="native-picker-separator">:</span>
-            <div class="native-picker-item">
-              <input type="number" id="duration-minutes" value="0" min="0" max="59" aria-label="分">
-              <label for="duration-minutes">分</label>
-            </div>
-            <span class="native-picker-separator">:</span>
-            <div class="native-picker-item">
-              <input type="number" id="duration-seconds" value="0" min="0" max="59" aria-label="秒">
-              <label for="duration-seconds">秒</label>
-            </div>
+          <div class="native-time-picker">
+            <input type="time" id="duration-time-input" value="01:00" step="1">
           </div>
         </div>
         <button type="submit" class="btn btn-primary">開始</button>
