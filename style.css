@@ -43,6 +43,7 @@ body {
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
   padding: 30px;
   display: flex;
+  flex-direction: column;
 }
 
 .screen {
@@ -59,28 +60,13 @@ body {
 /* --- ヘッダー, 共通コンポーネント (変更なし) --- */
 .main-header {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  text-align: center;
   margin-bottom: 20px;
   flex-shrink: 0;
 }
 
 .main-header h2 {
   font-size: 1.5rem;
-}
-
-.icon-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--subtext-color);
-  transition: color 0.2s;
-}
-
-.icon-btn:hover {
-  color: var(--text-color);
 }
 
 .app-title {
@@ -115,17 +101,7 @@ body {
 
 .btn-primary:hover {
   background-color: var(--primary-color-dark);
-  transform: translateY(-2px);
-}
-
-.btn-danger {
-  background-color: #f8d7da;
-  color: #721c24;
-}
-
-.btn-danger:hover {
-  background-color: #f5c6cb;
-  transform: translateY(-2px);
+  transform: translateY(-px);
 }
 
 .form-group {
@@ -143,7 +119,6 @@ body {
 }
 
 input[type="text"],
-input[type="time"],
 textarea {
   width: 100%;
   padding: 12px;
@@ -154,50 +129,71 @@ textarea {
 }
 
 /* =================================================== */
-/* ▼▼▼ 初期設定画面のレイアウト（Gridバージョン）▼▼▼ */
+/* ▼▼▼ 初期設定画面のレイアウト（最終決戦版）▼▼▼ */
 /* =================================================== */
 #setup-screen {
-  /* 画面全体をGridコンテナにする */
-  display: grid;
-  /* 縦の分割: (ヘッダー部分 自動), (フォーム部分 残り全部), (ボタン部分 自動) */
-  grid-template-rows: auto 1fr auto;
-  height: 100%;
+  justify-content: space-between;
   text-align: center;
 }
 
 #setup-form {
   width: 100%;
-  /* フォームの中身もGridにする */
-  display: grid;
-  /* 縦の分割: (欲望入力), (時間入力 残り全部) */
-  grid-template-rows: auto 1fr;
-  gap: 25px;
 }
 
-/* 時間入力のグループ */
-.form-group:nth-child(2) {
-  display: grid;
-  /* 縦の分割: (ラベル 自動), (入力欄 残り全部) */
-  grid-template-rows: auto 1fr;
-  gap: 10px;
-  margin-bottom: 0;
+/* --- 時間入力欄のラッパー（これが鍵！） --- */
+.time-input-wrapper {
+  display: flex;
+  /* 中のinputをFlexアイテムとして扱う */
+  width: 100%;
+  /* このラッパーの幅を100%に固定 */
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  /* 背景色をつけて一体感を出す */
 }
 
 #duration-time-input {
+  flex-grow: 1;
+  /* ラッパーの中で可能な限り広がる */
+  width: 100%;
+  /* 幅を100%に */
+
   font-family: 'Roboto Mono', monospace;
   font-size: 2.5rem;
   font-weight: 700;
   text-align: center;
-  border: 2px solid var(--border-color);
-  border-radius: 12px;
-  padding: 10px;
   cursor: pointer;
-  /* width はGridが自動で計算するので不要 */
+
+  /* ★★★ ブラウザのデフォルトスタイルを強制的に上書き ★★★ */
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  /* クリック時の青い枠線を消す */
+  -webkit-appearance: none;
+  /* iOS Safariでの見た目をリセット */
+  -moz-appearance: none;
+  appearance: none;
 }
 
 /* =================================================== */
 /* ▲▲▲ ▲▲▲ ▲▲▲ */
 /* =================================================== */
+
+/* --- タイマー画面 --- */
+#timer-screen {
+  justify-content: space-between;
+}
+
+.timer-display {
+  text-align: center;
+  margin: auto 0;
+}
+
+/* ... (以降のCSSは変更なし) ... */
+
 
 /* --- タイマー画面 --- */
 #timer-screen {
