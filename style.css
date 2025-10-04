@@ -111,6 +111,7 @@ input[type="text"], input[type="number"] { width: 100%; padding: 12px; font-size
 /* --- 画面幅が600px以上（PCなど）の場合に適用されるスタイル --- */
 @media (min-width: 601px) {
     .app-container {
+        display: flex;
         height: 80vh;
         max-height: 700px;
         border-radius: 20px;
