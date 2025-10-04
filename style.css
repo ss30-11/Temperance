@@ -241,6 +241,63 @@ input[type="number"] {
   resize: vertical;
 }
 
+.native-picker-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e9ecef;
+  /* 背景色を少しつける */
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.native-picker-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.native-picker-wrapper input[type="number"] {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 2.5rem;
+  font-weight: 700;
+  width: 80px;
+  text-align: center;
+  border: none;
+  background: none;
+  /* 背景を透明に */
+  color: var(--text-color);
+  padding: 5px 0;
+}
+
+/* ブラウザが自動で付ける上下の矢印（スピナー）を非表示にする */
+.native-picker-wrapper input[type="number"]::-webkit-outer-spin-button,
+.native-picker-wrapper input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.native-picker-wrapper input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.native-picker-item label {
+  font-size: 0.8rem;
+  color: var(--subtext-color);
+  margin: 0;
+}
+
+.native-picker-separator {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--subtext-color);
+  margin: 0 5px;
+  transform: translateY(-8px);
+  /* 位置を微調整 */
+}
+
+
 
 /* =================================================== */
 /* ▼▼▼ モバイル対応（レスポンシブデザイン）▼▼▼ */
@@ -315,60 +372,4 @@ input[type="number"] {
     padding: 0 5px;
   }
 
-}
-
-.native-picker-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #e9ecef;
-  /* 背景色を少しつける */
-  border-radius: 12px;
-  padding: 10px;
-}
-
-.native-picker-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.native-picker-wrapper input[type="number"] {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 2.5rem;
-  font-weight: 700;
-  width: 80px;
-  text-align: center;
-  border: none;
-  background: none;
-  /* 背景を透明に */
-  color: var(--text-color);
-  padding: 5px 0;
-}
-
-/* ブラウザが自動で付ける上下の矢印（スピナー）を非表示にする */
-.native-picker-wrapper input[type="number"]::-webkit-outer-spin-button,
-.native-picker-wrapper input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.native-picker-wrapper input[type="number"] {
-  -moz-appearance: textfield;
-}
-
-.native-picker-item label {
-  font-size: 0.8rem;
-  color: var(--subtext-color);
-  margin: 0;
-}
-
-.native-picker-separator {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--subtext-color);
-  margin: 0 5px;
-  transform: translateY(-8px);
-  /* 位置を微調整 */
 }
