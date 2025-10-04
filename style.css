@@ -118,7 +118,6 @@ input[type="text"], input[type="number"] { width: 100%; padding: 12px; font-size
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 
     .native-time-picker {
-        display: flex;
         width: 100%;
     }
 
