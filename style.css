@@ -220,6 +220,39 @@ textarea {
 }
 
 /* --- 振り返り画面, 履歴画面, モバイル対応 (変更なし) ... */
+/* ... */
+
+/* --- 結果入力画面 --- */
+#result-screen {
+    justify-content: center;
+    text-align: center;
+}
+.result-content h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+.result-message {
+    color: var(--subtext-color);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+.result-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+    /* ▼▼▼ この一行を追加するだけ！ ▼▼▼ */
+    gap: 15px;
+    /* ▲▲▲ ▲▲▲ ▲▲▲ */
+}
+.result-buttons .btn {
+    background-color: #e9ecef;
+    color: var(--text-color);
+}
+.result-buttons .btn:hover {
+    background-color: #dee2e6;
+}
+
 .review-content {
   flex-grow: 1;
   overflow-y: auto;
