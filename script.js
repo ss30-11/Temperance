@@ -9,9 +9,7 @@ const screens = {
 };
 const setupForm = document.getElementById('setup-form');
 const desireInput = document.getElementById('desire-input');
-const durationHoursInput = document.getElementById('duration-hours');
-const durationMinutesInput = document.getElementById('duration-minutes');
-const durationSecondsInput = document.getElementById('duration-seconds');
+const durationTimeInput = document.getElementById('duration-time-input');
 const desireDisplay = document.getElementById('desire-display');
 const timerDisplay = document.getElementById('timer');
 
@@ -57,10 +55,9 @@ function switchScreen(screenKey) {
 function handleSetupSubmit(event) {
   event.preventDefault();
   appData.targetDesire = desireInput.value;
-  const hours = parseInt(durationHoursInput.value) || 0;
-  const minutes = parseInt(durationMinutesInput.value) || 0;
-  const seconds = parseInt(durationSecondsInput.value) || 0;
-  const totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
+  const timeValue = durationTimeInput.value; // "HH:MM" または "HH:MM:SS"
+  const [hours, minutes, seconds] = timeValue.split(':').map(Number);
+  const totalSeconds = (hours * 3600) + (minutes * 60) + (seconds || 0);
   if (totalSeconds <= 0) { alert('目標時間を設定してください。'); return; }
 
   appData.targetEndTime = Date.now() + (totalSeconds * 1000);
