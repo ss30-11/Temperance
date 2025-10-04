@@ -5,11 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Temperance - 欲望コントロール</title>
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="css/style.css">
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Roboto+Mono:wght@400;700&display=swap"
     rel="stylesheet">
-  <script src="./script.js" defer></script>
+  <script src="js/script.js" defer></script>
 </head>
 
 <body>
@@ -18,21 +18,21 @@
 
     <!-- ===== 初期設定画面 ===== -->
     <div id="setup-screen" class="screen">
-      <h1 class="app-title">Temperance</h1>
-
-      <form id="setup-form">
-        <div class="form-group">
-          <label for="desire-input">コントロールしたい欲望</label>
-          <input type="text" id="desire-input" placeholder="例: SNSの衝動見" required>
-        </div>
-        <div class="form-group">
-          <label>目標継続時間</label>
-          <div class="native-time-picker">
-            <input type="time" id="duration-time-input" value="01:00" step="1">
+      <div class="screen-content">
+        <h1 class="app-title">Temperance</h1>
+        <p class="subtitle">コントロールしたい欲望と、<br>向き合う時間を設定してください。</p>
+        <form id="setup-form">
+          <div class="form-group">
+            <label for="desire-input">コントロールしたい欲望</label>
+            <input type="text" id="desire-input" placeholder="例: SNSの衝動見" required>
           </div>
-        </div>
-        <button type="submit" class="btn btn-primary">開始</button>
-      </form>
+          <div class="form-group">
+            <label for="duration-time-input">向き合う時間</label>
+            <input type="time" id="duration-time-input" value="00:05" step="1">
+          </div>
+          <button type="submit" class="btn btn-primary">トレーニングを始める</button>
+        </form>
+      </div>
     </div>
 
     <!-- ===== メインタイマー画面 ===== -->
@@ -40,19 +40,40 @@
       <header class="main-header">
         <h2 id="desire-display"></h2>
       </header>
-
       <div class="timer-display">
+        <p class="timer-label">残り時間</p>
         <div id="timer" class="timer-clock">00:00:00</div>
       </div>
-      <form id="review-form" class="review-steps">
-        <div class="step"><label>Step 1: 環境</label><textarea placeholder="その時、どんな物理的な環境にいましたか？"></textarea></div>
-        <div class="step"><label>Step 2: 心の状態</label><textarea placeholder="衝動が湧き上がる前、どんな心の状態でしたか？"></textarea></div>
-        <div class="step"><label>Step 3: 衝動の観察</label><textarea placeholder="湧き上がった衝動は、どんな感覚でしたか？"></textarea></div>
-        <div class="step"><label>Step 4: 感情の対処</label><textarea placeholder="衝動を抑えるために、何か試しましたか？"></textarea></div>
-        <div class="step"><label>Step 5: 次の計画</label><textarea placeholder="次回、同じ状況になったら、どんな行動を取りますか？"></textarea></div>
-        <div class="step"><label>Step 6: ミニ実験</label><textarea placeholder="この振り返りから、次に試してみたい改善案はありますか？"></textarea>
+
+      <div class="review-content">
+        <p class="review-subtitle">衝動が収まるまで、以下のステップを実践しましょう。</p>
+        <div class="review-steps">
+          <div class="step"><label>Step 1: 環境</label><textarea placeholder="その時、どんな物理的な環境にいましたか？"></textarea></div>
+          <div class="step"><label>Step 2: 心の状態</label><textarea placeholder="衝動が湧き上がる前、どんな心の状態でしたか？"></textarea></div>
+          <div class="step"><label>Step 3: 衝動の観察</label><textarea placeholder="湧き上がった衝動は、どんな感覚でしたか？"></textarea></div>
+          <div class="step"><label>Step 4: 感情の対処</label><textarea placeholder="衝動を抑えるために、何か試しましたか？"></textarea></div>
+          <div class="step"><label>Step 5: 次の計画</label><textarea placeholder="次回、同じ状況になったら、どんな行動を取りますか？"></textarea>
+          </div>
+          <div class="step"><label>Step 6: ミニ実験</label><textarea placeholder="この振り返りから、次に試してみたい改善案はありますか？"></textarea>
+          </div>
         </div>
-      </form>
+      </div>
+
+      <button id="reset-btn" class="btn btn-danger">ギブアップ</button>
+    </div>
+
+    <!-- ===== 結果入力画面 ===== -->
+    <div id="result-screen" class="screen">
+      <div class="result-content">
+        <h2>お疲れ様でした！</h2>
+        <p class="result-message"></p>
+        <p>あなたの行動を選択してください:</p>
+        <div class="result-buttons">
+          <button class="btn" data-result="succeed">我慢できた</button>
+          <button class="btn" data-result="postpone">先延ばしにできた</button>
+          <button class="btn" data-result="fail">負けてしまった</button>
+        </div>
+      </div>
     </div>
 
   </div>
