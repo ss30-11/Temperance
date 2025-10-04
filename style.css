@@ -152,6 +152,7 @@ input[type="number"] {
 /* --- 初期設定画面 --- */
 #setup-screen {
   text-align: center;
+  height: 100%;
 }
 
 #setup-form {
@@ -165,6 +166,13 @@ input[type="number"] {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+}
+
+.form-group:nth-child(2) {
+    flex-grow: 1; /* 残りの高さいっぱいまで伸びる */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px; /* ボタンとの間に少し多めに余白を確保 */
 }
 
 #duration-time-input {
