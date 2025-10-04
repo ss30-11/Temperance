@@ -1,300 +1,136 @@
 /* --- 基本設定と変数 --- */
 :root {
-  --primary-color: #6c757d;
-  --primary-color-dark: #5a6268;
-  --danger-color: #dc3545;
-  --background-color: #f8f9fa;
-  --card-background: #ffffff;
-  --text-color: #212529;
-  --subtext-color: #6c757d;
-  --border-color: #dee2e6;
+    --primary-color: #6c757d;
+    --primary-color-dark: #5a6268;
+    --danger-color: #dc3545;
+    --background-color: #f8f9fa;
+    --card-background: #ffffff;
+    --text-color: #212529;
+    --subtext-color: #6c757d;
+    --border-color: #dee2e6;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 0;
-  /* モバイル対応のため修正 */
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0;
 }
 
 /* --- 全体コンテナと画面切替 --- */
 .app-container {
-  width: 100%;
-  max-width: 450px;
-  height: 100vh;
-  /* モバイルで全画面になるように */
-  background-color: var(--card-background);
-  padding: 40px 20px;
-  /* 左右の余白を調整 */
-  display: flex;
+    width: 100%;
+    max-width: 450px;
+    height: 100vh;
+    background-color: var(--card-background);
+    padding: 40px 20px;
+    display: flex;
 }
-
 .screen {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
-
 .screen.active {
-  display: flex;
+    display: flex;
 }
 
 /* --- ヘッダー --- */
-.main-header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-  flex-shrink: 0;
-}
-
-.main-header h2 {
-  font-size: 1.5rem;
-}
-
-.icon-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--subtext-color);
-  transition: color 0.2s;
-}
-
-.icon-btn:hover {
-  color: var(--text-color);
-}
+.main-header { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-shrink: 0; }
+.main-header h2 { font-size: 1.5rem; }
+.icon-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--subtext-color); transition: color 0.2s; }
+.icon-btn:hover { color: var(--text-color); }
 
 /* --- 共通コンポーネント --- */
-.app-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: var(--primary-color);
-}
+.app-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; color: var(--primary-color); }
+.subtitle { color: var(--subtext-color); text-align: center; margin-bottom: 30px; line-height: 1.6; }
+.btn { width: 100%; padding: 15px; font-size: 1rem; font-weight: 700; border-radius: 12px; cursor: pointer; transition: all 0.2s ease; }
+.btn-primary { background-color: var(--primary-color); color: white; border: none; }
+.btn-primary:hover { background-color: var(--primary-color-dark); transform: translateY(-2px); }
+.btn-danger { background-color: #f8d7da; color: #721c24; border: none; }
+.btn-danger:hover { background-color: #f5c6cb; transform: translateY(-2px); }
+.form-group { margin-bottom: 25px; width: 100%; }
+.form-group label { display: block; margin-bottom: 10px; font-weight: 600; font-size: 0.9rem; color: #555; text-align: left; }
+input[type="text"], input[type="number"], input[type="time"] { width: 100%; padding: 12px; font-size: 1rem; border: 1px solid var(--border-color); border-radius: 8px; }
 
-.subtitle {
-  color: var(--subtext-color);
-  text-align: center;
-  margin-bottom: 30px;
-  line-height: 1.6;
-}
-
-.btn {
-  width: 100%;
-  padding: 15px;
-  font-size: 1rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-primary {
-  background-color: var(--primary-color);
-  color: white;
-}
-
-.btn-primary:hover {
-  background-color: var(--primary-color-dark);
-  transform: translateY(-2px);
-}
-
-.btn-danger {
-  background-color: #f8d7da;
-  color: #721c24;
-}
-
-.btn-danger:hover {
-  background-color: #f5c6cb;
-  transform: translateY(-2px);
-}
-
-.form-group {
-  margin-bottom: 25px;
-  width: 100%;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: #555;
-  text-align: left;
-}
-
-input[type="text"],
-input[type="number"] {
-  width: 100%;
-  padding: 12px;
-  font-size: 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-}
-
-/* --- 初期設定画面 --- */
+/* =================================================== */
+/* ▼▼▼ 初期設定画面のレイアウト（ここからが修正箇所）▼▼▼ */
+/* =================================================== */
 #setup-screen {
-  text-align: center;
-  height: 100%;
+    text-align: center;
+    justify-content: space-between; /* 要素を上下に配置 */
+    height: 100%;
 }
 
 #setup-form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.form-group:last-of-type {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group:nth-child(2) {
-    flex-grow: 1; /* 残りの高さいっぱいまで伸びる */
+    width: 100%;
     display: flex;
     flex-direction: column;
-    margin-bottom: 40px; /* ボタンとの間に少し多めに余白を確保 */
+    /* このフォームは高さを成り行きに任せる */
+}
+
+/* 2番目のフォームグループ（時間設定） */
+.form-group:nth-child(2) {
+    margin-bottom: 40px;
 }
 
 #duration-time-input {
-  flex-grow: 1;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 2.5rem;
-  font-weight: 700;
-  text-align: center;
-  border: 2px solid var(--border-color);
-  border-radius: 12px;
-  padding: 10px;
-  width: 100%;
-  cursor: pointer;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
 }
+
+/* =================================================== */
+/* ▲▲▲ ▲▲▲ ▲▲▲ */
+/* =================================================== */
 
 /* --- タイマー画面 --- */
-#timer-screen {
-  justify-content: space-between;
-  height: 100%;
-}
-
-.timer-display {
-  text-align: center;
-  margin: auto 0;
-}
-
-.timer-label {
-  font-size: 1rem;
-  color: var(--subtext-color);
-  margin-bottom: 10px;
-}
-
-.timer-clock {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: var(--text-color);
-  letter-spacing: 2px;
-}
+#timer-screen { justify-content: space-between; height: 100%; }
+.timer-display { text-align: center; margin: auto 0; }
+.timer-label { font-size: 1rem; color: var(--subtext-color); margin-bottom: 10px; }
+.timer-clock { font-family: 'Roboto Mono', monospace; font-size: 3.5rem; font-weight: 700; color: var(--text-color); letter-spacing: 2px; }
 
 /* --- 振り返り画面 --- */
-.review-header {
-  text-align: center;
-  margin-bottom: 20px;
-  flex-shrink: 0;
-}
-
-.review-header p {
-  line-height: 1.6;
-  color: var(--subtext-color);
-}
-
-.review-steps {
-  width: 100%;
-  overflow-y: auto;
-  padding-right: 10px;
-  flex-grow: 1;
-}
-
-.step {
-  margin-bottom: 20px;
-}
-
-.step label {
-  display: block;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-.step textarea {
-  width: 100%;
-  height: 80px;
-  padding: 10px;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.9rem;
-  resize: vertical;
-}
+.review-header { text-align: center; margin-bottom: 20px; flex-shrink: 0; }
+.review-header p { line-height: 1.6; color: var(--subtext-color); }
+.review-steps { width: 100%; overflow-y: auto; padding-right: 10px; flex-grow: 1; }
+.step { margin-bottom: 20px; }
+.step label { display: block; font-weight: 700; margin-bottom: 8px; }
+.step textarea { width: 100%; height: 80px; padding: 10px; border: 1px solid var(--border-color); border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 0.9rem; resize: vertical; }
 
 /* --- 履歴画面 --- */
-#history-list {
-  width: 100%;
-  list-style: none;
-  overflow-y: auto;
-}
+#history-list { width: 100%; list-style: none; overflow-y: auto; }
+#history-list li { padding: 15px; border-bottom: 1px solid var(--border-color); }
+#history-list li:last-child { border-bottom: none; }
 
-#history-list li {
-  padding: 15px;
-  border-bottom: 1px solid var(--border-color);
-}
-
-#history-list li:last-child {
-  border-bottom: none;
-}
-
-
-/* =================================================== */
-/* ▼▼▼ モバイル対応（レスポンシブデザイン）▼▼▼ */
-/* =================================================== */
-
-/* --- 画面幅が600px以上（PCなど）の場合に適用されるスタイル --- */
+/* --- モバイル対応 --- */
 @media (min-width: 601px) {
-  .app-container {
-    height: 80vh;
-    max-height: 700px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  }
+    .app-container {
+        height: 80vh;
+        max-height: 700px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
 }
-
-/* --- 画面幅が480px以下（小型スマホ）の場合の微調整 --- */
 @media (max-width: 480px) {
-  .app-container {
-    padding: 30px 15px;
-  }
-
-  .app-title {
-    font-size: 2rem;
-  }
-
-  .timer-clock {
-    font-size: 2.8rem;
-  }
+    .app-container { padding: 30px 15px; }
+    .app-title { font-size: 2rem; }
+    .timer-clock { font-size: 2.8rem; }
 }
